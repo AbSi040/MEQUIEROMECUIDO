@@ -292,18 +292,8 @@
         <div class="login-container">
             <form 
                 id="profileForm" 
-                name="registro-perfil" 
-                method="POST" 
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                onsubmit="guardarYRedirigir(event)"
             >
-                <input type="hidden" name="form-name" value="registro-perfil">
-                <p style="display:none">
-                    <label>No llenes este campo: <input name="bot-field"></label>
-                </p>
                 
-                <input type="hidden" name="formulario" value="Paso 1 - Selección de perfil">
                 
                 <div class="form-group">
                     <div class="radio-option">
@@ -358,25 +348,7 @@
     </div>
 
     <script>
-        function guardarYRedirigir(event) {
-            event.preventDefault();
-            
-            // Validar que se haya seleccionado una opción
-            const selectedOption = document.querySelector('input[name="age"]:checked');
-            if (!selectedOption) {
-                alert('Por favor selecciona una opción');
-                return;
-            }
-            
-            // Enviar primero a Netlify
-            event.target.submit(); 
-            
-            // Redirigir después de 1 segundo (tiempo suficiente para enviar)
-            setTimeout(() => {
-                window.location.href = "register2.html";
-            }, 1000);
-        }
-
+       
         // Animación de entrada
         window.addEventListener('load', function() {
             const container = document.querySelector('.container');

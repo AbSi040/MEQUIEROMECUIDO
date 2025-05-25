@@ -18,15 +18,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         .container {
-            background: linear-gradient(135deg, white, white, white 100%);
+            background: white;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            padding: 40px;
+            padding: 20px;
+            width: 100%;
             max-width: 900px;
-            width: 90%;
             position: relative;
             overflow: hidden;
         }
@@ -35,217 +36,59 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .logo-left {
-            background: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            color: #5cb85c;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-      
-
-        .logo-right {
+        .logo-left, .logo-right {
             background: white;
             padding: 8px 15px;
             border-radius: 20px;
             font-weight: bold;
             color: #5cb85c;
-            font-size: 16px;
-        }
-
-        .main-content {
-            background: #8bc34a;
-            border-radius: 15Spx;
-            padding: 30px;
-            margin-bottom: 30px;
-            position: relative;
-            min-height: 300px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
         }
 
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        .logo-left img, .logo-right img {
+            max-width: 100%;
+            height: auto;
         }
 
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .logo-left {
+            font-size: 12px;
         }
 
-        
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            border: none;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-login {
-            background: transparent;
-            color: #2e7d32;
-            border: 2px solid #2e7d32;
-        }
-
-        .btn-login:hover {
-            background: #2e7d32;
-            color: white;
-        }
-
-        .btn-register {
-            background: #4caf50;
-            color: white;
-        }
-
-        .btn-register:hover {
-            background: #388e3c;
-            transform: translateY(-2px);
-        }
-
-        .social {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .social-icon.tiktok { background: #000; }
-        .social-icon.facebook { background: white; }
-        .social-icon.instagram { background: white}
-
-        .footer {
-            text-align: center;
-            font-size: 10px;
-            color: white;
+        .logo-right {
+            font-size: 14px;
         }
 
         .corner-logo {
-            padding-left: 400px;
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 20px;
-            }
-            
-            .btn {
-                width: 200px;
-            }
-
-            
-        }
-        .main-container {
-            display: flex;
-            flex: 1;
-            justify-content: center;
-            padding-bottom: 30px;
-            padding-top: 60px;
-        }
-
-        .sidebar-left, .sidebar-right {
-            background: #d0d0d0;
-            width: 300px;
-            flex-shrink: 0;
-        }
-
-        .content-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
-            background: white;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
 
-        .header-logo {
-            background: white;
-            border-radius: 25px;
-            padding: 15px 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #8bc34a, #4caf50);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .logo-text {
-            color: #4caf50;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 1.2;
+        .corner-logo img {
+            max-width: 100%;
+            height: auto;
         }
 
         .login-container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            padding: 40px;
+            padding: 20px;
             width: 100%;
-            max-width: 450px;
             position: relative;
         }
 
-      
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-label {
@@ -258,7 +101,7 @@
 
         .form-input {
             width: 100%;
-            padding: 15px;
+            padding: 12px 15px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
@@ -278,163 +121,66 @@
             font-size: 14px;
         }
 
-               .login-btn {
-  background: #12c185;
-  color: black;
-  padding: 15px;
-  border: 2px solid black;  /* Borde negro añadido */
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 30px;
-  margin-left: 70px;
-  margin-top: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  width: 60%;
-  max-width: 300px;
-}
-
-.login-btn:hover {
-  background: linear-gradient(135deg, #388e3c, #4caf50);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-}
-
-.login-btn:active {
-  transform: translateY(0);
-}
-
-        .forgot-password {
-            text-align: center;
-            color: #4caf50;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .forgot-password:hover {
-            color: #388e3c;
-            text-decoration: underline;
-        }
-
-        .footer {
-            background: #8bc34a;
-            padding: 30px 20px;
-            margin-top: auto;
-        }
-
-        .partners-section {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .partners-title {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .partners-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .partner-logo {
-            background: white;
-            padding: 8px 15px;
+        .privacy-notice {
+            background: #f0f8f0;
+            border: 1px solid #8bc34a;
             border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
             font-size: 12px;
-            color: #666;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            color: #2e7d32;
+            line-height: 1.4;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
             display: flex;
             align-items: center;
-            gap: 5px;
-        }
-
-        .social-section {
-            display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
         }
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-            font-size: 18px;
+        .password-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: all 0.3s ease;
         }
 
-        .social-icon:hover {
+        .password-toggle:hover svg {
             transform: scale(1.1);
         }
-        .footer-text {
-            text-align: center;
-            color: white;
-            font-size: 12px;
-            font-weight: 500;
+
+        .password-visible .password-toggle svg {
+            fill: #4caf50;
         }
 
-        @media (max-width: 1024px) {
-            .sidebar-left, .sidebar-right {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .content-area {
-                padding: 20px 15px;
-            }
-            
-            .login-container {
-                padding: 30px 20px;
-            }
-            .partners-logos {
-                gap: 15px;
-            }
-        }
-        .privacy-notice {
-    background: #f0f8f0;
-    border: 1px solid #8bc34a;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: #2e7d32;
-    line-height: 1.4;
-}
-
-/* Estilos para términos y condiciones */
         .terms-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 8px;
         }
 
         .terms-checkbox {
             margin-top: 3px;
             cursor: pointer;
-            width: 18px;
-            height: 18px;
+            min-width: 18px;
+            min-height: 18px;
             accent-color: #12c185;
         }
 
         .terms-text {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
             line-height: 1.4;
         }
@@ -450,6 +196,83 @@
             color: #388e3c;
         }
 
+        .login-btn {
+            background: #12c185;
+            color: black;
+            padding: 12px;
+            border: 2px solid black;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #388e3c, #4caf50);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .partners {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .partners-logos img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .social-icon.tiktok { background: #000; }
+        .social-icon.facebook { background: white; }
+        .social-icon.instagram { background: white; }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            padding: 10px 0;
+        }
+
         /* Modal de términos y condiciones */
         .modal-overlay {
             position: fixed;
@@ -462,7 +285,7 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            padding: 20px;
+            padding: 15px;
         }
 
         .modal-overlay.active {
@@ -471,19 +294,19 @@
 
         .modal-content {
             background: white;
-            border-radius: 20px;
-            max-width: 600px;
+            border-radius: 15px;
             width: 100%;
-            max-height: 80vh;
+            max-width: 600px;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             animation: modalSlideIn 0.3s ease-out;
         }
 
         @keyframes modalSlideIn {
             from {
-                transform: scale(0.9) translateY(-50px);
+                transform: scale(0.9) translateY(-30px);
                 opacity: 0;
             }
             to {
@@ -493,22 +316,23 @@
         }
 
         .modal-header {
-            background: white
-            color: white;
-            padding: 25px 30px;
-            border-radius: 20px 20px 0 0;
-            position: relative;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            border-bottom: 1px solid #eee;
         }
 
         .modal-header h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: #12c185;
         }
 
         .modal-header .subtitle {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.9;
             margin-top: 5px;
             color: #12c185;
@@ -516,17 +340,17 @@
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 25px;
+            top: 15px;
+            right: 15px;
             background: none;
             border: none;
-            color: white;
+            color: #12c185;
             font-size: 24px;
             cursor: pointer;
             padding: 5px;
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -534,63 +358,59 @@
         }
 
         .modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 20px;
         }
 
         .modal-section {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .modal-section h3 {
             color: #2e7d32;
             font-size: 16px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: 600;
         }
 
-        .modal-section p {
+        .modal-section p, .modal-section ul {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 15px;
-            text-align: justify;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
 
         .modal-section ul {
-            color: #666;
-            line-height: 1.6;
             padding-left: 20px;
         }
 
         .modal-section li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .modal-footer {
-            padding: 20px 30px 30px;
+            padding: 15px 20px 20px;
             text-align: center;
         }
 
         .modal-btn {
             background: #12c185;
-  color: black;
-  padding: 15px;
-  border: 2px solid black;  /* Borde negro añadido */
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 30px;
-  margin-top: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  width: 60%;
-  max-width: 300px;
+            color: black;
+            padding: 12px;
+            border: 2px solid black;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
         }
 
         .modal-btn:hover {
@@ -598,196 +418,186 @@
             box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
         }
 
-        .modal-btn:active {
-            transform: translateY(0);
+        /* Media Queries para mejor adaptación */
+        @media (min-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+            
+            .header {
+                margin-bottom: 30px;
+            }
+            
+            .logo-left {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            
+            .logo-right {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            
+            .login-container {
+                padding: 30px;
+            }
+            
+            .privacy-notice {
+                font-size: 13px;
+                padding: 15px;
+            }
+            
+            .terms-text {
+                font-size: 14px;
+            }
         }
 
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 10px;
-                max-height: 90vh;
-            }
-            
-            .modal-header {
-                padding: 20px;
-            }
-            
-            .modal-body {
-                padding: 20px;
-            }
-            
-            .modal-footer {
-                padding: 15px 20px 20px;
+        @media (min-width: 992px) {
+            .corner-logo {
+                justify-content: space-between;
+                margin: 30px 0;
             }
         }
-.password-container {
-    position: relative;
-}
-
-.password-toggle {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.password-toggle svg {
-    transition: all 0.3s ease;
-}
-
-.password-toggle:hover svg {
-    transform: scale(1.1);
-}
-
-/* Estilo para cuando la contraseña es visible */
-.password-visible .password-toggle svg {
-    fill: #4caf50;
-}
-
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo-left"><img src="img/Logo_2.png"></div>
-            <div class="logo-right"><img src="img/LOGO_principal.png"></div>
+            <div class="logo-left"><img src="img/Logo_2.png" alt="Logo secundario"></div>
+            <div class="logo-right"><img src="img/LOGO_principal.png" alt="Logo principal"></div>
         </div>
 
-       <div class="corner-logo">
-        <img src="img/texto_register.png">
-        <img src="img/mascota 1.png"></div>
+        <div class="corner-logo">
+            <img src="img/texto_register.png" alt="Texto Register">
+            <img src="img/mascota 1.png" alt="Mascota">
+        </div>
 
-
-        <div class="main-container">
-        
-            <div class="login-container">
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label class="form-label" for="email">Correo</label>
+        <div class="login-container">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Correo</label>
+                    <input 
+                        type="email" 
+                        id="code" 
+                        class="form-input"
+                        placeholder="Ingrese su correo electrónico"
+                        required
+                    >
+                </div>
+                
+                <div class="privacy-notice">
+                    Usaremos el correo electrónico para recuperar tu contraseña si la olvidas o la pierdes.
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Contraseña</label>
+                    <div class="password-container">
                         <input 
-                            type="email" 
-                            id="code" 
+                            type="password" 
+                            id="password" 
                             class="form-input"
+                            placeholder="Cree una contraseña segura"
                             required
                         >
+                        <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5C5.63636 5 2 12 2 12C2 12 5.63636 19 12 19C18.3636 19 22 12 22 12C22 12 18.3636 5 12 5Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
-                    
-                     <div class="privacy-notice">
-                        Usaremos el correo electrónico para recuperar tu contraseña si la olvidas o la pierdes.
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Repita su contraseña</label>
+                    <div class="password-container">
+                        <input 
+                            type="password" 
+                            id="repitepassword" 
+                            class="form-input"
+                            placeholder="Repita su contraseña"
+                            required
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword('repitepassword')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 5C5.63636 5 2 12 2 12C2 12 5.63636 19 12 19C18.3636 19 22 12 22 12C22 12 18.3636 5 12 5Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="password">Contraseña</label>
-                        <div class="password-container">
-                            <input 
-                                type="password" 
-                                id="password" 
-                                class="form-input"
-                                required
-                            >
-                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 5C5.63636 5 2 12 2 12C2 12 5.63636 19 12 19C18.3636 19 22 12 22 12C22 12 18.3636 5 12 5Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="password">Repita su contraseña</label>
-                        <div class="password-container">
-                            <input 
-                                type="password" 
-                                id="repitepassword" 
-                                class="form-input"
-                                required
-                            >
-                            <button type="button" class="password-toggle" onclick="togglePassword('repitepassword')">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 5C5.63636 5 2 12 2 12C2 12 5.63636 19 12 19C18.3636 19 22 12 22 12C22 12 18.3636 5 12 5Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                     <div class="privacy-notice">
-                      Tu(s) nombre(s) y apellidos no se mostrarán a terceros en la plataforma.
-                    </div>
+                </div>
+                
+                <div class="privacy-notice">
+                    Tu(s) nombre(s) y apellidos no se mostrarán a terceros en la plataforma.
+                </div>
 
-                     <!-- Checkbox de términos y condiciones -->
-                    <div class="terms-group">
-                        <input type="checkbox" id="termsCheckbox" class="terms-checkbox" required>
-                        <div class="terms-text">
-                            <span class="terms-link" onclick="openTermsModal()">Términos y Condiciones</span>
-                        </div>
+                <!-- Checkbox de términos y condiciones -->
+                <div class="terms-group">
+                    <input type="checkbox" id="termsCheckbox" class="terms-checkbox" required>
+                    <div class="terms-text">
+                        <span class="terms-link" onclick="openTermsModal()">Términos y Condiciones</span>
                     </div>
-                    
-                    <button type="submit" class="login-btn"><a href="wellcome.html" style=" text-decoration: none;
-    color: inherit">Registrar</a></button>
-                </form>
-            </div>
+                </div>
+                
+                <button type="submit" class="login-btn"><a href="wellcome.html" style="text-decoration: none; color: inherit">Registrar</a></button>
+            </form>
         </div>
+        
         <div class="partners">
             <div class="partners-logos">
-                <img src="img/socios_locales.png">
+                <img src="img/socios_locales.png" alt="Socios locales">
             </div>
         </div>
 
         <div class="social">
-            <a href="https://www.tiktok.com/@soytatu1" class="social-icon tiktok" onclick="openSocial('tiktok')"><img src="img/tiktok.svg"></a>
-            <a href="https://www.facebook.com/MQMCBolivia" class="social-icon facebook" onclick="openSocial('facebook')"><img src="img/facebook-svgrepo-com.svg" width="49" height="49"></a>
-            <a href="https://www.instagram.com/mqmcbolivia/" class="social-icon instagram" onclick="openSocial('instagram')"><img src="img/instagram-svgrepo-com.svg" width="30" height="30"></a>
+            <a href="https://www.tiktok.com/@soytatu1" class="social-icon tiktok" onclick="openSocial('tiktok')"><img src="img/tiktok.svg" alt="TikTok"></a>
+            <a href="https://www.facebook.com/MQMCBolivia" class="social-icon facebook" onclick="openSocial('facebook')"><img src="img/facebook-svgrepo-com.svg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/mqmcbolivia/" class="social-icon instagram" onclick="openSocial('instagram')"><img src="img/instagram-svgrepo-com.svg" alt="Instagram"></a>
         </div>
 
         <div class="footer">Me quiero, Me cuido 2025</div>
 
         <!-- Modal de Términos y Condiciones -->
-    <div class="modal-overlay" id="termsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Plataforma Virtual del programa "Me Quiero Me Cuido"</h2>
-                <div class="subtitle">Plataforma Virtual del programa "Me Quiero Me Cuido"</div>
-                <button class="modal-close" onclick="closeTermsModal()">&times;</button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="modal-section">
-                    <p>El propósito de ChildFund International es mejorar la vida de las niñas, niños, adolescentes (NNA), para ello hemos desarrollado una plataforma virtual en las que las niñas, niños, adolescentes, jóvenes, padres, madres, cuidadores, docentes y líderes comunitarios podrán participar y capacitarse con el programa "Me quiero Me Cuido" en temas de: sexualidad y salud integral, promoción de la igualdad de género, vínculos afectivos y reducción de riesgos y desastres.</p>
+        <div class="modal-overlay" id="termsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Plataforma Virtual del programa "Me Quiero Me Cuido"</h2>
+                    <div class="subtitle">Plataforma Virtual del programa "Me Quiero Me Cuido"</div>
+                    <button class="modal-close" onclick="closeTermsModal()">&times;</button>
                 </div>
+                
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <p>El propósito de ChildFund International es mejorar la vida de las niñas, niños, adolescentes (NNA), para ello hemos desarrollado una plataforma virtual en las que las niñas, niños, adolescentes, jóvenes, padres, madres, cuidadores, docentes y líderes comunitarios podrán participar y capacitarse con el programa "Me quiero Me Cuido" en temas de: sexualidad y salud integral, promoción de la igualdad de género, vínculos afectivos y reducción de riesgos y desastres.</p>
+                    </div>
 
-                <div class="modal-section">
-                    <p>El compromiso que tenemos con la protección y la salvaguarda de la niñez y adolescencia nos obliga a garantizar que todas nuestras intervenciones sean seguras, por ese motivo, esta plataforma tiene una serie de medidas de seguridad para evitar poner en riesgo a la niñez y adolescencia. Estas son algunas de las medidas que hemos tomado para garantizar la seguridad en esta plataforma.</p>
-                </div>
+                    <div class="modal-section">
+                        <p>El compromiso que tenemos con la protección y la salvaguarda de la niñez y adolescencia nos obliga a garantizar que todas nuestras intervenciones sean seguras, por ese motivo, esta plataforma tiene una serie de medidas de seguridad para evitar poner en riesgo a la niñez y adolescencia. Estas son algunas de las medidas que hemos tomado para garantizar la seguridad en esta plataforma.</p>
+                    </div>
 
-                <div class="modal-section">
-                    <h3>Seguridad de la plataforma</h3>
-                    <p>La plataforma presenta las siguientes medidas de seguridad para mantener la información confidencial:</p>
+                    <div class="modal-section">
+                        <h3>Seguridad de la plataforma</h3>
+                        <p>La plataforma presenta las siguientes medidas de seguridad para mantener la información confidencial:</p>
+                        
+                        <ul>
+                            <li>La plataforma cuenta con un certificado "SSL" que le permite establecer una conexión segura entre el usuario y la plataforma, para que nadie pueda interceptar la información compartida.</li>
+                            <li>La base de datos está resguardada evitando que terceras personas ajenas al servidor puedan tener acceso a la información.</li>
+                            <li>Toda la información confidencial como datos personales, se encuentra encriptada y no es posible leerla o interpretarla por otra persona.</li>
+                            <li>La plataforma utiliza la última versión de "recaptcha" de Google, para evitar que personas o bot maliciosos puedan interactuar con el login o foro de la plataforma.</li>
+                            <li>Se realizará una copia de respaldo de los datos de la plataforma y usuarios semanalmente.</li>
+                        </ul>
+                    </div>
                     
-                    <ul>
-                        <li>La plataforma cuenta con un certificado "SSL" que le permite establecer una conexión segura entre el usuario y la plataforma, para que nadie pueda interceptar la información compartida.</li>
-                        <li>La base de datos está resguardada evitando que terceras personas ajenas al servidor puedan tener acceso a la información.</li>
-                        <li>Toda la información confidencial como datos personales, se encuentra encriptada y no es posible leerla o interpretarla por otra persona.</li>
-                        <li>La plataforma utiliza la última versión de "recaptcha" de Google, para evitar que personas o bot maliciosos puedan interactuar con el login o foro de la plataforma.</li>
-                         <li>Se realizará una copia de respaldo de los datos de la plataforma y usuarios semanalmente.</li>
-                    </ul>
+                    <div class="modal-section">
+                        <h3>Salvaguarda Infantil</h3>
+                        <p>Todas nuestras organizaciones socias de Childfund cuentan con una serie de políticas que nos ayudan a cumplir con nuestro compromiso de salvaguarda.</p>
+                        <p>Asimismo, todas nuestras organizaciones socias se adhieren a la Política de Salvaguarda de ChildFund y la legislación nacional e internacional de protección de la niñez.</p>
+                    </div>
                 </div>
-                 <div class="modal-section">
-                    <h3>Salvaguarda Infantil</h3>
-                    <p>Todas nuestras organizaciones socias de Childfund cuentan con una serie de políticas que nos ayudan a cumplir con nuestro compromiso de salvaguarda.</p>
-                    <p>Asimismo, todas nuestras organizaciones socias se adhieren a la Política de Salvaguarda de ChildFund y la legislación nacional e internacional de protección de la niñez.</p>
+                
+                <div class="modal-footer">
+                    <button class="modal-btn" onclick="closeTermsModal()">Entiendo, continuar</button>
                 </div>
-            </div>
-            
-            <div class="modal-footer">
-                <button class="modal-btn" onclick="closeTermsModal()">Entiendo, continuar</button>
             </div>
         </div>
     </div>
@@ -820,13 +630,17 @@
             document.body.style.overflow = 'auto';
         }
 
+        function openSocial(network) {
+            // Puedes agregar aquí tracking o analytics si lo deseas
+            console.log('Red social seleccionada:', network);
+        }
     
         // Animación de entrada
         window.addEventListener('load', function() {
             const container = document.querySelector('.container');
             container.style.opacity = '0';
-            container.style.transform = 'scale(0.9)';
-            container.style.transition = 'all 0.5s ease';
+            container.style.transform = 'scale(0.95)';
+            container.style.transition = 'all 0.3s ease';
             
             setTimeout(() => {
                 container.style.opacity = '1';
@@ -838,7 +652,7 @@
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-3px)';
-                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
             });
             
             btn.addEventListener('mouseleave', function() {
@@ -848,6 +662,13 @@
         });
 
         // Prevenir envío del formulario si no se aceptan los términos
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            if (!document.getElementById('termsCheckbox').checked) {
+                e.preventDefault();
+                alert('Debes aceptar los términos y condiciones para continuar.');
+                openTermsModal();
+            }
+        });
     </script>
 </body>
 </html>

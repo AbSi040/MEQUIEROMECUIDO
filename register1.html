@@ -712,20 +712,23 @@
         
             <div class="login-container">
                <form 
-  id="profileForm" 
-  name="registro-perfil" 
-  method="POST" 
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  onsubmit="guardarYRedirigir(event)"
->
-  <input type="hidden" name="form-name" value="registro-perfil">
-  <p style="display:none">
-    <label>No llenes <input name="bot-field"></label>
-  </p>
-  
-  <!-- Añade un campo oculto para identificar el formulario -->
-  <input type="hidden" name="formulario" value="Paso 1 - Selección de perfil">
+                    id="profileForm" 
+                    name="registro-perfil" 
+                    method="POST" 
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                >
+                    <!-- Campo honeypot para spam -->
+                    <p style="display:none">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
+
+                    <!-- Identificador del formulario -->
+                    <input type="hidden" name="form-name" value="registro-perfil">
+                    
+                    <!-- Información adicional -->
+                    <input type="hidden" name="timestamp" id="timestamp">
+                    <input type="hidden" name="page" value="Paso 1 - Selección de perfil">
   
 
                     <div class="form-group">
@@ -778,17 +781,31 @@
     </div>
 
     <script>
-        function guardarYRedirigir(event) {
-  event.preventDefault();
-  
-  // Enviar primero a Netlify
-  event.target.submit(); 
-  
-  // Redirigir después de 3 segundos (tiempo suficiente)
-  setTimeout(() => {
-    window.location.href = "register2.html";
-  }, 3000); // Aumentamos el tiempo
-}
+        // Establecer timestamp al cargar la página
+        document.getElementById('timestamp').value = new Date().toISOString();
+
+        // Envío silencioso del formulario
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            // Envío silencioso a Netlify (sin bloquear la navegación)
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            }).catch(error => {
+                // Silenciar errores - el usuario no debe ver nada
+                console.log('Formulario enviado (con o sin errores)');
+            });
+            
+            // Redirigir inmediatamente sin esperar respuesta
+            setTimeout(() => {
+                window.location.href = 'register2.html';
+            }, 100); // Delay mínimo para asegurar que el fetch se inicie
+        });
 
         // Animación de entrada
         window.addEventListener('load', function() {

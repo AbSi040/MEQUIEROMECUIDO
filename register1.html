@@ -778,6 +778,17 @@
     </div>
 
     <script>
+        function guardarYRedirigir(event) {
+  event.preventDefault();
+  
+  // Enviar primero a Netlify
+  event.target.submit(); 
+  
+  // Redirigir después de 3 segundos (tiempo suficiente)
+  setTimeout(() => {
+    window.location.href = "register2.html";
+  }, 3000); // Aumentamos el tiempo
+}
 
         // Animación de entrada
         window.addEventListener('load', function() {

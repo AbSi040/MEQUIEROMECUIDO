@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me Quiero, Me Cuido</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 50%, #d0d0d0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: linear-gradient(135deg, white, white, white 100%);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-left {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: #5cb85c;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+      
+
+        .logo-right {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #5cb85c;
+            font-size: 16px;
+        }
+
+        .main-content {
+            background: #8bc34a;
+            border-radius: 15Spx;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+       
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+
+    
+       
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon.tiktok { background: #000; }
+        .social-icon.facebook { background: white; }
+        .social-icon.instagram { background: white}
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: white;
+        }
+
+        .corner-logo {
+            position: absolute;
+            top: 19%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            .btn {
+                width: 200px;
+            }
+
+            
+        }
+        .main-container {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            padding-bottom: 30px;
+            padding-top: 60px;
+        }
+
+        .sidebar-left, .sidebar-right {
+            background: #d0d0d0;
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            background: white;
+        }
+
+        .header-logo {
+            background: white;
+            border-radius: 25px;
+            padding: 15px 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #8bc34a, #4caf50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4caf50;
+            background: white;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+            font-size: 14px;
+        }
+        
+
+        .footer {
+            background: #8bc34a;
+            padding: 30px 20px;
+            margin-top: auto;
+        }
+
+        .partners-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .partners-title {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #666;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        
+        .footer-text {
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar-left, .sidebar-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-area {
+                padding: 20px 15px;
+            }
+            
+            .login-container {
+                padding: 30px 20px;
+            }
+            
+            .character-bubble {
+                display: none;
+            }
+            
+            .character-icon {
+                display: none;
+            }
+            
+            .partners-logos {
+                gap: 15px;
+            }
+        }
+
+/* Formulario dentro del login-container */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4caf50;
+    background: white;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #4caf50;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.password-toggle:hover {
+    color: #388e3c;
+}
+
+        .login-btn {
+  background: #12c185;
+  color: black;
+  padding: 15px;
+  border: 2px solid black;  /* Borde negro añadido */
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  margin-left: 70px;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 60%;
+  max-width: 300px;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #388e3c, #4caf50);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+.forgot-password {
+    text-align: center;
+    color: #4caf50;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #388e3c;
+    text-decoration: underline;
+}
+
+/* Estilos específicos para opciones de radio */
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.radio-option:hover {
+    background: #f5f5f5;
+}
+
+.radio-option input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #8bc34a;
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.radio-option input[type="radio"]:checked {
+    background: #12c185;
+    border-color: #12c185;
+}
+
+.radio-option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.radio-option label {
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    flex: 1;
+}
+
+/* Estilos para campos personalizados */
+.custom-input {
+    margin-top: 10px;
+}
+
+.date-input {
+    color: #333;
+}
+
+.select-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234caf50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+    padding-right: 50px;
+}
+
+.privacy-notice {
+    background: #f0f8f0;
+    border: 1px solid #8bc34a;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #2e7d32;
+    line-height: 1.4;
+}
+
+/* Media queries para responsive */
+@media (max-width: 1024px) {
+    .sidebar-left, .sidebar-right {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px 15px;
+    }
+    
+    .content-area {
+        padding: 20px 15px;
+    }
+    
+    .login-container {
+        padding: 30px 20px;
+    }
+    
+    .character-bubble {
+        display: none;
+    }
+    
+    .character-icon {
+        display: none;
+    }
+    
+    .radio-option {
+        padding: 15px;
+    }
+    
+    .radio-option label {
+        font-size: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-left"><img src="img/Logo_2.png"></div>
+            <div class="logo-right"><img src="img/LOGO_principal.png"></div>
+        </div>
+
+       <div class="corner-logo"><img src="img/texto_register.png"><img src="img/mascota 1.png"></div>
+
+
+        <div class="main-container">
+        
+            <div class="login-container">
+                <form id="registrationForm">
+
+                    <div class="form-group">
+                        <label class="form-label" for="municipality">Nombre(s)</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            class="form-input" 
+                            placeholder="Escribe correctamente tu nombre completo"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="school">Apellidos</label>
+                        <input 
+                            type="text" 
+                            id="middlename" 
+                            class="form-input" 
+                            placeholder="Escribe correctamente tus apellidos"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="school">Tu nick o nombre para mostrar</label>
+                        <input 
+                            type="text" 
+                            id="middlename" 
+                            class="form-input" 
+                            placeholder="Este es el nombre que se verá en la plataforma"
+                        >
+                    </div>
+                    <div class="privacy-notice">
+                        Tu(s) nombre(s) y apellidos no se mostrarán a terceros en la plataforma.
+                    </div>
+                    
+                    <button type="submit" class="login-btn"><a href="register4.html" style="text-decoration: none;
+    color: inherit">Siguiente</a></button>
+    
+                </form>
+            </div>
+        </div>
+        <div class="partners">
+            <div class="partners-logos">
+                <img src="img/socios_locales.png">
+            </div>
+        </div>
+
+        <div class="social">
+            <a href="https://www.tiktok.com/@soytatu1" class="social-icon tiktok" onclick="openSocial('tiktok')"><img src="img/tiktok.svg"></a>
+            <a href="https://www.facebook.com/MQMCBolivia" class="social-icon facebook" onclick="openSocial('facebook')"><img src="img/facebook-svgrepo-com.svg" width="49" height="49"></a>
+            <a href="https://www.instagram.com/mqmcbolivia/" class="social-icon instagram" onclick="openSocial('instagram')"><img src="img/instagram-svgrepo-com.svg" width="30" height="30"></a>
+        </div>
+
+        <div class="footer">Me quiero, Me cuido 2025</div>
+
+        
+    </div>
+
+    <script>
+function handleGenderChange() {
+    const genderSelect = document.getElementById('gender');
+    const customGenderDiv = document.getElementById('custom-gender');
+    const customGenderInput = document.getElementById('custom-gender-text');
+    
+    if (genderSelect.value === 'me-identifico') {
+        customGenderDiv.style.display = 'block';
+        customGenderInput.required = true;
+        customGenderInput.focus();
+    } else {
+        customGenderDiv.style.display = 'none';
+        customGenderInput.required = false;
+        customGenderInput.value = '';
+    }
+}
+
+        // Animación de entrada
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'scale(0.9)';
+            container.style.transition = 'all 0.5s ease';
+            
+            setTimeout(() => {
+                container.style.opacity = '1';
+                container.style.transform = 'scale(1)';
+            }, 100);
+        });
+
+        // Efectos de hover mejorados
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me Quiero, Me Cuido</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 50%, #d0d0d0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-left {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            color: #5cb85c;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-right {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #5cb85c;
+            font-size: 16px;
+        }
+
+        .main-content {
+            background: #fa6a35;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+ .level-selection {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 100px;
+        }
+
+        .level-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .level-circle.basic {
+            background: #4caf50;
+            color: white;
+            border: 3px solid #4caf50;
+        }
+
+        .level-circle.intermediate {
+            background: #f5f5f5;
+            color: #999;
+            border: 3px solid #ddd;
+        }
+
+        .level-circle.expert {
+            background: #f5f5f5;
+            color: #999;
+            border: 3px solid #ddd;
+        }
+
+        .level-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .level-circle.basic:hover {
+            background: #45a049;
+        }
+
+        .level-icon {
+            width: 50px; /* Tamaño para las imágenes de iconos */
+            height: 50px;
+            margin-bottom: 8px;
+        }
+
+        .level-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .welcome {
+            text-align: center;
+            color: #034337;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+
+        .btn-login:hover {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-register {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-register:hover {
+            background: #388e3c;
+            transform: translateY(-2px);
+        }
+
+        .partners {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .partners-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            height: 30px;
+            background: #ddd;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 10px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon.tiktok { background: #000; }
+        .social-icon.facebook { background: white; }
+        .social-icon.instagram { background: white}
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+
+       .corner-logo {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            padding: 12px 20px;
+            background: #12c185;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .floating-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20pxS rgba(0,0,0,0.2);
+        }
+
+        .floating-btn.caldera {
+            background: #12c185;
+        }
+
+        .floating-btn.caldera:hover {
+            background: #45a049;
+        }
+
+        .floating-btn-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-btn-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .level-selection {
+                gap: 15px;
+                padding: 50px;
+            }
+            
+            .level-circle {
+                width: 120px;
+                height: 120px;
+                font-size: 12px;
+            }
+            
+            .level-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .floating-buttons {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .floating-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-left"><img src="img/Logo_2.png" alt="Logo 2"></div>
+            <div class="logo-right"><img src="img/LOGO_principal.png" alt="Logo Principal"></div>
+        </div>
+
+        <div class="main-content">
+            <img src="img/a490f-portada-de-13-a-19-anos.png" alt="Portada 13-19 años" >
+            
+            
+        </div>
+
+        <div class="TATU-BIENVENIDOS">
+            <div class="corner-logo">
+                <img src="img/texto_level.png" alt="Level Text"><img src="img/mascota 1.png" alt="Mascota">
+            </div>
+        </div>
+
+        <div class="level-selection">
+            <a href="level4capsules.html" class="level-circle basic" onclick="selectLevel('basic')">
+                <div class="level-icon">
+                    <img src="img/running-svgrepo-com.svg" alt="Nivel Básico">
+                </div>
+                <div>Básico</div>
+            </a>
+            
+            <a href="#" class="level-circle intermediate" onclick="selectLevel('intermediate')">
+                <div class="level-icon">
+                    <img src="img/locked-svgrepo-com.svg" alt="Nivel Intermedio">
+                </div>
+                <div>Intermedio</div>
+            </a>
+            
+            <a href="#" class="level-circle expert" onclick="selectLevel('expert')">
+                <div class="level-icon">
+                    <img src="img/locked-svgrepo-com.svg" alt="Nivel Experto">
+                </div>
+                <div>Experto</div>
+            </a>
+        </div>
+       
+       
+        <div class="partners">
+            <div class="partners-logos">
+                <img src="img/socios_locales.png" alt="Socios Locales">
+            </div>
+        </div>
+
+        <div class="social">
+            <a href="https://www.tiktok.com/@soytatu1" class="social-icon tiktok" onclick="openSocial('tiktok')">
+                <img src="img/tiktok.svg" alt="TikTok">
+            </a>
+            <a href="https://www.facebook.com/MQMCBolivia" class="social-icon facebook" onclick="openSocial('facebook')">
+                <img src="img/facebook-svgrepo-com.svg" width="49" height="49" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/mqmcbolivia/" class="social-icon instagram" onclick="openSocial('instagram')">
+                <img src="img/instagram-svgrepo-com.svg" width="30" height="30" alt="Instagram">
+            </a>
+        </div>
+
+        <div class="footer">Me quiero, Me cuido 2025</div>
+    </div>
+
+     <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://soundcloud.com/mediaimpact/sets/radionovela-calicanto-bolivia" class="floating-btn calicanto">
+            <div class="floating-btn-icon">
+                <img src="img/microphone-svgrepo-com.svg" alt="Calicanto">
+            </div>
+            <span>CALICANTO</span>
+        </a>
+        <a href="https://soundcloud.com/mediaimpact/sets/la-caldera-radionovela" class="floating-btn caldera">
+            <div class="floating-btn-icon">
+                <img src="img/microphone-svgrepo-com.svg" alt="La Caldera">
+            </div>
+            <span>LA CALDERA</span>
+        </a>
+    </div>
+
+    <script>
+        
+        function openSocial(platform) {
+            console.log('Abriendo:', platform);
+        }
+
+        // Efectos de hover mejorados
+        document.querySelectorAll('.btn, .level-circle, .floating-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('level-circle')) {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('level-circle')) {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+        });
+
+        // Animación suave para los botones flotantes
+        window.addEventListener('scroll', function() {
+            const floatingButtons = document.querySelector('.floating-buttons');
+            if (window.scrollY > 100) {
+                floatingButtons.style.opacity = '0.9';
+            } else {
+                floatingButtons.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>

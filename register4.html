@@ -627,17 +627,22 @@
             }
         }
         
-        // Funciones del modal
+        // Función para abrir el modal
         function openTermsModal() {
             const modal = document.getElementById('termsModal');
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open');
+            
+            // Asegurarse que el modal scrollee al inicio
+            const modalContent = modal.querySelector('.modal-content');
+            modalContent.scrollTop = 0;
         }
 
+        // Función para cerrar el modal
         function closeTermsModal() {
             const modal = document.getElementById('termsModal');
             modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.body.classList.remove('modal-open');
         }
     
         // Animación de entrada

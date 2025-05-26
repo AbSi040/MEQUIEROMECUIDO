@@ -260,6 +260,13 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa EmailJS (reemplaza 'YOUR_USER_ID' con tu ID de EmailJS)
+        (function() {
+            emailjs.init('dZVrwXaCa7tmTcMCb'); // Obtén esto desde tu dashboard de EmailJS
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -270,7 +277,7 @@
 
         <div class="register-header">
             <img src="img/texto_register.png" alt="Registro">
-            <img src="img/mascota 1.png" alt="Mascota" style="width: 50px; margin-top: 10px;">
+            <img src="img/mascota 1.png" alt="Mascota" style="width: 70px; margin-top: 10px;">
         </div>
 
         <div class="login-container">
@@ -384,6 +391,65 @@
             }
         }
 
+         // Función para manejar el envío del formulario
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validar campos
+            const birthdate = document.getElementById('birthdate').value;
+            const gender = document.getElementById('gender').value;
+            const department = document.getElementById('department').value;
+            const municipality = document.getElementById('municipality').value;
+            const school = document.getElementById('school').value;
+            
+            if (!birthdate || !gender || !department || !municipality) {
+                alert('Por favor completa todos los campos requeridos');
+                return;
+            }
+            
+            // Manejar el género personalizado
+            let finalGender = gender;
+            if (gender === 'me-identifico') {
+                const customGender = document.getElementById('custom-gender-text').value;
+                if (!customGender) {
+                    alert('Por favor especifica cómo te identificas');
+                    return;
+                }
+                finalGender = `Personalizado: ${customGender}`;
+            }
+            
+            // Mostrar estado de carga
+            const submitBtn = document.querySelector('.login-btn');
+            submitBtn.disabled = true;
+            
+            try {
+                // Enviar datos a EmailJS
+                await emailjs.send('service_5tc4a7m', 'template_bt30onq', {
+                    formulario: "Paso 2 - Datos personales",
+                    fecha_nacimiento: birthdate,
+                    genero: finalGender,
+                    departamento: department,
+                    municipio: municipality,
+                    escuela_trabajo: school || 'No especificado',
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    hora: new Date().toLocaleTimeString('es-ES')
+                });
+                
+                // Redirigir después del envío exitoso
+                window.location.href = "register3.html";
+                
+            } catch (error) {
+                console.error('Error al enviar:', error);
+                // Redirigir incluso si falla el envío
+                window.location.href = "register3.html";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Siguiente';
+            }
+        });
+
+
+        
         // Animación de entrada
         window.addEventListener('load', function() {
             const container = document.querySelector('.container');
@@ -397,41 +463,6 @@
             }, 100);
         });
 
-        // Validación del formulario
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validar fecha de nacimiento
-            const birthdate = document.getElementById('birthdate').value;
-            if (!birthdate) {
-                alert('Por favor ingresa tu fecha de nacimiento');
-                return;
-            }
-            
-            // Validar género
-            const gender = document.getElementById('gender').value;
-            if (!gender) {
-                alert('Por favor selecciona un género');
-                return;
-            }
-            
-            // Validar departamento
-            const department = document.getElementById('department').value;
-            if (!department) {
-                alert('Por favor selecciona un departamento');
-                return;
-            }
-            
-            // Validar municipio
-            const municipality = document.getElementById('municipality').value;
-            if (!municipality) {
-                alert('Por favor ingresa tu municipio');
-                return;
-            }
-            
-            // Redirigir al siguiente paso
-            window.location.href = 'register3.html';
-        });
 
         // Efectos hover para elementos interactivos
         document.querySelectorAll('.login-btn, .social-icon').forEach(element => {

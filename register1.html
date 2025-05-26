@@ -276,6 +276,13 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa EmailJS (reemplaza 'YOUR_USER_ID' con tu ID de EmailJS)
+        (function() {
+            emailjs.init('Pr1XoC3eCI4M4AZQg'); // Obtén esto desde tu dashboard de EmailJS
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -292,18 +299,8 @@
         <div class="login-container">
             <form 
                 id="profileForm" 
-                name="registro-perfil" 
-                method="POST" 
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                onsubmit="guardarYRedirigir(event)"
             >
-                <input type="hidden" name="form-name" value="registro-perfil">
-                <p style="display:none">
-                    <label>No llenes este campo: <input name="bot-field"></label>
-                </p>
-                
-                <input type="hidden" name="formulario" value="Paso 1 - Selección de perfil">
+            
                 
                 <div class="form-group">
                     <div class="radio-option">
@@ -358,32 +355,56 @@
     </div>
 
     <script>
-        function guardarYRedirigir(event) {
-            event.preventDefault();
+       // Función principal para manejar el envío del formulario
+        document.getElementById('profileForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            // Validar que se haya seleccionado una opción
+            // Validar selección
             const selectedOption = document.querySelector('input[name="age"]:checked');
             if (!selectedOption) {
                 alert('Por favor selecciona una opción');
                 return;
             }
             
-            // Enviar primero a Netlify
-            event.target.submit(); 
+            // Mostrar mensaje de carga (opcional)
+            const submitBtn = document.querySelector('.login-btn');
+            submitBtn.disabled = true;
             
-            // Redirigir después de 1 segundo (tiempo suficiente para enviar)
-            setTimeout(() => {
+            try {
+                // Enviar datos a EmailJS
+                await emailjs.send('service_5tc4a7m', 'template_bt30onq', {
+                    formulario: "Paso 1 - Selección de perfil",
+                    perfil_seleccionado: selectedOption.value,
+                    fecha: new Date().toLocaleDateString('es-ES'),
+                    hora: new Date().toLocaleTimeString('es-ES'),
+                    detalle: `Usuario seleccionó: ${getProfileDescription(selectedOption.value)}`
+                });
+                
+                // Redirigir después del envío exitoso
                 window.location.href = "register2.html";
-            }, 1000);
-        }
-
-        // Validación del formulario
-        document.getElementById('profileForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aquí iría la lógica de autenticación
-            window.location.href = 'register2.html';
+                
+            } catch (error) {
+                console.error('Error al enviar:', error);
+                // Redirigir incluso si falla el envío
+                window.location.href = "register2.html";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Siguiente';
+            }
         });
+
+        // Función para obtener descripción del perfil
+        function getProfileDescription(value) {
+            const profiles = {
+                '6-8': 'Niños de 6 a 8 años',
+                '9-12': 'Niños de 9 a 12 años',
+                '13-19': 'Adolescentes de 13 a 19 años',
+                'lideres': 'Líderes comunitarios',
+                'padres': 'Madres/padres de familia',
+                'educadores': 'Educadores/Docentes'
+            };
+            return profiles[value] || value;
+        }
 
         // Animación de entrada
         window.addEventListener('load', function() {
